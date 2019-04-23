@@ -50,21 +50,21 @@ cat.speak();
 
 // code example for Explicit Binding
 
-function AlternateUniverse (beast, noise){   
-    this.beast = beast;
-    this.noise = noise;
+function AlternateUniverse (animalSound){   
+    this.animalSound = animalSound;
     this.says = function (){
-        console.log("Explicit Binding Dogs then Cats reversed \n", ` A ${this.beast} makes the sound ${this.noise}`)
+        console.log("Explicit Binding \n", ` A dog  ${this.animalSound}`);
+        console.log("Explicit Binding \n", ` A cat  ${this.animalSound}`);
     }
 };
 
-const dogs = new AlternateUniverse("dog", "Whoof Whoof!");
-const cats = new AlternateUniverse("cat", "Meow");
+const dogs = new AlternateUniverse("Barks");
+const cats = new AlternateUniverse("Purrs");
 
 
 dogs.says.call(cats);
 cats.says.apply(dogs);
 
-
+// I wrote two console logs just to show the bindings a bit more clear. 
 
 
