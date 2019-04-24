@@ -207,7 +207,11 @@ Humanoid.prototype.greet = function () {
   console.log("mage take damage \n", mage.takeDamage()); // Bruce took damage.
   console.log("swordsman destroy \n", swordsman.destroy()); // Sir Mustachio was removed from the game.
 
-  console.log("Villian Attack \n", villian.attack());
+
+
+  //STRETCH
+
+  console.log("Villian Attack Stretch \n", villian.attack());
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
