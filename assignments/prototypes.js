@@ -57,7 +57,7 @@ CharacterStats.prototype.takeDamage = function(){
 */
 
 function Humanoid(humanoidAttrs) {
-  CharacterStats.call(this, humanoidAttrs)
+  CharacterStats.call(this, humanoidAttrs);
   this.team = humanoidAttrs.team;
   this.weapons = humanoidAttrs.weapons;
   this.language = humanoidAttrs.language;
@@ -70,7 +70,38 @@ Humanoid.prototype.greet = function () {
 };
 
 
- 
+// Stretch task: 
+
+  function Villian(villianAttrs){
+    Humanoid.call(this, villianAttrs);
+  };
+
+ Villian.prototype = Object.create(Humanoid.prototype);
+
+
+  Villian.prototype.attack = function () {
+    let villianAttack = Math.floor(Math.random() * 5) - this.healthPoints;
+    if(this.healthPoints <= 0){
+      console.log("Total Destruction")
+    }else{
+      console.log(`${this.name} has ${villianAttack} health points left! `);
+    }
+  };
+  
+  Hero.prototype = Object.create(Humanoid.prototype);
+
+  function Hero(heroAttrs){
+    Humanoid.call(this, heroAttrs);
+  };
+
+  Hero.prototype.attack = function () {
+    let heroAttack =  Math.floor(Math.random() * 5) - this.healthPoints;
+    if(this.healthPoints <= 0){
+      console.log("Total Destruction")
+    }else{
+      console.log(`${this.name} has ${heroAttack} health points left! `);
+    }
+  };
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -130,6 +161,41 @@ Humanoid.prototype.greet = function () {
     language: 'Elvish',
   });
 
+
+  // Stretch 
+
+  const villian = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 3,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 20,
+    name: 'Knight King',
+    team: 'Whitewalkers',
+    weapons: [
+      'Magic',
+    ],
+    language: 'Common Tongue',
+  });
+
+  const hero = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 2,
+    },
+    healthPoints: 15,
+    name: 'John Snow',
+    team: 'Winterfell',
+    weapons: [
+      'LongSword',
+    ],
+    language: 'Common Tongue',
+  });
+
   console.log("Mage created at \n", mage.createdAt); // Today's date
   console.log("archer dimensions \n ", archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log("swordsman healthPoints \n", swordsman.healthPoints); // 15
@@ -141,6 +207,7 @@ Humanoid.prototype.greet = function () {
   console.log("mage take damage \n", mage.takeDamage()); // Bruce took damage.
   console.log("swordsman destroy \n", swordsman.destroy()); // Sir Mustachio was removed from the game.
 
+  console.log("Villian Attack \n", villian.attack());
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
