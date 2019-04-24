@@ -38,9 +38,13 @@ function CharacterStats(CharacterStatsAttrs){
 
 };
 
+CharacterStats.prototype = Object.create(GameObject.prototype);
+
 CharacterStats.prototype.takeDamage = function(){
   return `${this.name} took damage.`;
 };
+
+
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -59,9 +63,13 @@ function Humanoid(humanoidAttrs) {
   this.language = humanoidAttrs.language;
 };
 
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
 Humanoid.prototype.greet = function () {
   return `${this.name} offers a greeting in ${this.language}.`;
-}
+};
+
+
  
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -129,9 +137,9 @@ Humanoid.prototype.greet = function () {
   console.log("swordsman team \n", swordsman.team); // The Round Table
   console.log("mage weapons \n", mage.weapons); // Staff of Shamalama
   console.log("archer.language \n", archer.language); // Elvish
-  console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-  console.log(mage.takeDamage()); // Bruce took damage.
-  console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+  console.log("archer greet \n ", archer.greet()); // Lilith offers a greeting in Elvish.
+  console.log("mage take damage \n", mage.takeDamage()); // Bruce took damage.
+  console.log("swordsman destroy \n", swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 
   // Stretch task: 
